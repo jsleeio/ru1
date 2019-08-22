@@ -10,6 +10,7 @@ configured on a network interface.
 
 Normal usage looks like this:
 
+```
 $ ./ru1 -interface=em0 -name=myhost -zone=example.com -ttl=60
 2019/08/22 20:55:02 em0 added 1.2.3.4
 2019/08/22 20:55:02 em0 current 1.2.3.4
@@ -17,6 +18,7 @@ $ ./ru1 -interface=em0 -name=myhost -zone=example.com -ttl=60
 2019/08/22 20:55:06 upsert of 'myhost.example.com.' appeared to succeed
 2019/08/22 20:55:22 upsert sync status: PENDING
 2019/08/22 20:55:38 upsert sync status: INSYNC
+```
 
 ## options
 
