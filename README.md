@@ -44,4 +44,8 @@ Usage of ./ru1:
 
 * updating apex records is completely untested
 * updating with multiple IP addresses should work but is untested
+* support for multiple A records sure would be nice
+* healthchecks would be nice too
 * tested on OpenBSD and macOS
+* on OpenBSD, now uses [pledge](https://man.openbsd.org/pledge.2)
+  and [unveil](https://man.openbsd.org/unveil.2)

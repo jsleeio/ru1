@@ -100,6 +100,7 @@ func WatchInterface(name string, interval time.Duration, receiver func([]string)
 }
 
 func main() {
+	Lockdown()
 	config, err := Configure()
 	if err != nil {
 		log.Fatalf("invalid configuration: %v", err)
