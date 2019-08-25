@@ -39,13 +39,13 @@ $ ./ru1 -config=ru1.yaml
 2019/08/25 14:55:17 em0 added 1.2.3.4
 2019/08/25 14:55:17 em0 current 1.2.3.4
 2019/08/25 14:55:19 found zone 'myzone1' ID '/hostedzone/ABCDEFGHIJKL'
-2019/08/25 14:55:19 g4.pe: upsert appeared to succeed
-2019/08/25 14:55:35 g4.pe: upsert sync status: PENDING
-2019/08/25 14:55:51 g4.pe: upsert sync status: INSYNC
+2019/08/25 14:55:19 myzone1: upsert appeared to succeed
+2019/08/25 14:55:35 myzone1: upsert sync status: PENDING
+2019/08/25 14:55:51 myzone1: upsert sync status: INSYNC
 2019/08/25 14:55:52 found zone 'myzone2' ID '/hostedzone/MNOPQRSTUVWX'
-2019/08/25 14:55:52 l0.pe: upsert appeared to succeed
-2019/08/25 14:56:08 l0.pe: upsert sync status: PENDING
-2019/08/25 14:56:24 l0.pe: upsert sync status: INSYNC
+2019/08/25 14:55:52 myzone2: upsert appeared to succeed
+2019/08/25 14:56:08 myzone2: upsert sync status: PENDING
+2019/08/25 14:56:24 myzone2: upsert sync status: INSYNC
 ```
 
 ## options
