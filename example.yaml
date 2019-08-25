@@ -1,0 +1,11 @@
+interface: em0
+patience: 15s
+retries: 8
+targets:
+- zone: g4.pe
+  names:
+  - moist
+  - ''
+- zone: l0.pe
+  names:
+  - ''

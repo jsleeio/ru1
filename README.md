@@ -6,46 +6,61 @@ TLDR just a dynamic DNS updater.
 Route53 `A` or `AAAA` record up to date with the Internet-routable IP addresses
 configured on a network interface.
 
+## configuration
+
+Config is uncomplicated YAML and looks like:
+
+```
+interface: em0
+type: A
+targets:
+- zone: myzone.com
+  names:
+  - moist
+  - ''
+- zone: myzone.net
+  names:
+  - ''
+```
+
+The above configuration would watch interface `em0` and generate/maintain the
+below DNS A records:
+
+* `moist.myzone.com`
+* `myzone.com` (zone apex is represented by an empty string in the names list)
+* `myzone.net` (as above)
+
 ## demo
 
 Normal usage looks like this:
 
 ```
-$ ./ru1 -interface=em0 -name=myhost -zone=example.com -ttl=60
-2019/08/22 20:55:02 em0 added 1.2.3.4
-2019/08/22 20:55:02 em0 current 1.2.3.4
-2019/08/22 20:55:04 found zone 'example.com' ID '/hostedzone/ABCDEFGHIJKL'
-2019/08/22 20:55:06 upsert of 'myhost.example.com.' appeared to succeed
-2019/08/22 20:55:22 upsert sync status: PENDING
-2019/08/22 20:55:38 upsert sync status: INSYNC
+$ ./ru1 -config=ru1.yaml
+2019/08/25 14:55:17 em0 added 1.2.3.4
+2019/08/25 14:55:17 em0 current 1.2.3.4
+2019/08/25 14:55:19 found zone 'myzone1' ID '/hostedzone/ABCDEFGHIJKL'
+2019/08/25 14:55:19 g4.pe: upsert appeared to succeed
+2019/08/25 14:55:35 g4.pe: upsert sync status: PENDING
+2019/08/25 14:55:51 g4.pe: upsert sync status: INSYNC
+2019/08/25 14:55:52 found zone 'myzone2' ID '/hostedzone/MNOPQRSTUVWX'
+2019/08/25 14:55:52 l0.pe: upsert appeared to succeed
+2019/08/25 14:56:08 l0.pe: upsert sync status: PENDING
+2019/08/25 14:56:24 l0.pe: upsert sync status: INSYNC
 ```
 
 ## options
 
 ```
 Usage of ./ru1:
-  -give-up-after int
-    	Give up after this many completion checks (default 20)
-  -interface string
-    	network interface to observe for changes (default "em0")
-  -name string
-    	A record to update in the zone (default "z")
-  -patience duration
-    	How often to check for change completion (default 15s)
-  -ttl int
-    	Time-to-live value to apply to this record (default 300)
-  -type string
-    	Record type to update (A or AAAA) (default "A")
-  -zone string
-    	DNS zone within which to manage entry
+  -config string
+    	path to configuration file (default "ru1.yaml")
 ```
 
 ## notes
 
-* updating apex records is completely untested
 * updating with multiple IP addresses should work but is untested
-* support for multiple A records sure would be nice
-* healthchecks would be nice too
+* healthchecks would be nice
 * tested on OpenBSD and macOS
 * on OpenBSD, now uses [pledge](https://man.openbsd.org/pledge.2)
   and [unveil](https://man.openbsd.org/unveil.2)
+* investigate making it daemonize (tricky to do properly with Go...)

@@ -5,8 +5,6 @@ package main
 import (
 	"golang.org/x/sys/unix"
 	"log"
-	"os"
-	"path"
 )
 
 func MustUnveil(path, perms string) {
