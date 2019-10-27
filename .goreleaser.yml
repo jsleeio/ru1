@@ -1,0 +1,42 @@
+env:
+  - GO111MODULE=on
+before:
+  hooks:
+    - go mod tidy
+builds:
+- env:
+    - CGO_ENABLED=0
+  goos:
+    - openbsd
+    - linux
+  goarch:
+    - amd64
+    - arm64
+checksum:
+  name_template: '{{ .ProjectName }}_checksums.txt'
+changelog:
+  sort: asc
+  filters:
+    exclude:
+    - '^docs:'
+    - '^test:'
+    - Merge pull request
+    - Merge branch
+archives:
+  - name_template: '{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
+    replacements:
+      darwin: Darwin
+      linux: Linux
+      386: i386
+      amd64: x86_64
+nfpms:
+  - name_template: '{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
+    homepage:  https://github.com/jsleeio/ru1
+    description: AWS Route53 dynamic DNS record updater
+    maintainer: John Slee <jslee@jslee.io>
+    license: MIT
+    vendor: ru1
+    formats:
+    - deb
+    dependencies:
+    - git

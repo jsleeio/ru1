@@ -63,6 +63,8 @@ Usage of ./ru1:
 
 * healthchecks would be nice
 * tested on OpenBSD and macOS
+* untested on Linux --- if it works for you, I'd love it if you could
+  let me know. Email or create an issue?
 * on OpenBSD, uses [pledge](https://man.openbsd.org/pledge.2)
   and [unveil](https://man.openbsd.org/unveil.2)
 * investigate making it daemonize (tricky to do properly with Go)
