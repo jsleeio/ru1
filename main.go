@@ -108,8 +108,12 @@ func WatchInterface(config Config, receiver func([]string)) error {
 
 func main() {
 	configFile := flag.String("config", "ru1.yaml", "path to configuration file")
+	logTimestamps := flag.Bool("log-timestamps", false, "include timestamps in output messages")
 	flag.Parse()
 	config, err := LoadConfig(*configFile)
+	if !*logTimestamps {
+		log.SetFlags(0)
+	}
 	if err != nil {
 		log.Fatalf("error loading configuration: %v", err)
 	}
