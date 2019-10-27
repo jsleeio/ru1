@@ -1,0 +1,8 @@
+interface: em0
+patience: 15s
+retries: 8
+targets:
+- zone: example.com
+  names:
+  - moist
+  - ''
