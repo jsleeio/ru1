@@ -1,0 +1,4 @@
+#!/bin/sh
+
+. /etc/ru1/secret.env
+exec /usr/local/bin/ru1 -config=/etc/ru1/ru1.yaml

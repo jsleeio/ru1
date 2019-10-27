@@ -1,4 +1,4 @@
 *.env
 .*.swp
-ru1
-ru1.openbsd
+/ru1
+/ru1.openbsd

@@ -1,0 +1,5 @@
+### append this content to /etc/login.conf
+
+ru1:\
+        :openfiles=16:\
+        :tc=daemon:
